@@ -5,14 +5,16 @@ let carHornImage = "assets/images/car-horn.svg";
 let partyHornImage = "assets/images/party-horn.svg";
 let defaultImage = "assets/images/no-image.png";
 
-let airHornSound = "assets/images/air-horn.mp3";
-let carHornSound = "assets/images/car-horn.mp3";
-let partyHornSound = "assets/images/party-horn.mp3";
+let airHornSound = "assets/audio/air-horn.mp3";
+let carHornSound = "assets/audio/car-horn.mp3";
+let partyHornSound = "assets/audio/party-horn.mp3";
 
 let volIcon0 = "assets/icons/volume-level-0.svg";
 let volIcon1 = "assets/icons/volume-level-1.svg";
 let volIcon2 = "assets/icons/volume-level-2.svg";
 let volIcon3 = "assets/icons/volume-level-3.svg";
+
+const jsConfetti = new JSConfetti()
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -60,6 +62,17 @@ function init() {
     }
     else {
       volumeIcon.src = volIcon3;
+    }
+  });
+
+  let playButton = document.querySelector("button");
+  playButton.addEventListener("click", (event) => {
+    console.log("Play sound button clicked");
+    // play sound based on which horn is selected
+    hornAudio.play();
+    if (hornSelect.value == "party-horn") {
+      console.log("Play button clicked for party horn");
+      jsConfetti.addConfetti()
     }
   });
 }
